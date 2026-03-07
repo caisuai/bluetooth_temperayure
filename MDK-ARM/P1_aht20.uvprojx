@@ -590,12 +590,32 @@
             <File>
               <FileName>aht20.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\BSP\aht20.c</FilePath>
+              <FilePath>..\BSP\aht20\aht20.c</FilePath>
             </File>
             <File>
               <FileName>aht20.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\BSP\aht20.h</FilePath>
+              <FilePath>..\BSP\aht20\aht20.h</FilePath>
+            </File>
+            <File>
+              <FileName>font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\oled\font.c</FilePath>
+            </File>
+            <File>
+              <FileName>font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\oled\font.h</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\oled\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\oled\oled.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -611,6 +631,21 @@
               <FileName>sensorTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\sensorTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>screenTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\screenTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>farmState.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\farmState.c</FilePath>
+            </File>
+            <File>
+              <FileName>farmState.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\farmState.h</FilePath>
             </File>
           </Files>
         </Group>

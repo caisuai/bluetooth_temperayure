@@ -61,10 +61,22 @@ const osThreadAttr_t sensorTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for screenTask */
+osThreadId_t screenTaskHandle;
+const osThreadAttr_t screenTask_attributes = {
+  .name = "screenTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for BLEQueue */
 osMessageQueueId_t BLEQueueHandle;
 const osMessageQueueAttr_t BLEQueue_attributes = {
   .name = "BLEQueue"
+};
+/* Definitions for i2c1Mutex */
+osMutexId_t i2c1MutexHandle;
+const osMutexAttr_t i2c1Mutex_attributes = {
+  .name = "i2c1Mutex"
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,6 +86,7 @@ const osMessageQueueAttr_t BLEQueue_attributes = {
 
 void StartBLETask(void *argument);
 extern void StartsensorTask(void *argument);
+extern void StartscreenTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -86,6 +99,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* creation of i2c1Mutex */
+  i2c1MutexHandle = osMutexNew(&i2c1Mutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -113,6 +129,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of sensorTask */
   sensorTaskHandle = osThreadNew(StartsensorTask, NULL, &sensorTask_attributes);
+
+  /* creation of screenTask */
+  screenTaskHandle = osThreadNew(StartscreenTask, NULL, &screenTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

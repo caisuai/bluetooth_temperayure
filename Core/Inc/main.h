@@ -41,6 +41,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+extern osMutexId_t i2c1MutexHandle;
 extern osMessageQueueId_t BLEQueueHandle;
 /* USER CODE END EC */
 
