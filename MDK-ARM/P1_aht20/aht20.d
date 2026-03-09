@@ -1,5 +1,5 @@
-p1_aht20\aht20.o: ..\BSP\aht20.c
-p1_aht20\aht20.o: ..\BSP\aht20.h
+p1_aht20\aht20.o: ..\BSP\aht20\aht20.c
+p1_aht20\aht20.o: ..\BSP\aht20\aht20.h
 p1_aht20\aht20.o: ../Core/Inc/i2c.h
 p1_aht20\aht20.o: ../Core/Inc/main.h
 p1_aht20\aht20.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h

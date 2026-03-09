@@ -1,5 +1,5 @@
 p1_aht20\sensortask.o: ..\App\sensorTask.c
-p1_aht20\sensortask.o: ..\App\../BSP/aht20.h
+p1_aht20\sensortask.o: ..\App\../BSP/aht20/aht20.h
 p1_aht20\sensortask.o: ../Core/Inc/i2c.h
 p1_aht20\sensortask.o: ../Core/Inc/main.h
 p1_aht20\sensortask.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
@@ -39,5 +39,6 @@ p1_aht20\sensortask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portab
 p1_aht20\sensortask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 p1_aht20\sensortask.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
 p1_aht20\sensortask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+p1_aht20\sensortask.o: ..\App\farmState.h
 p1_aht20\sensortask.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 p1_aht20\sensortask.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

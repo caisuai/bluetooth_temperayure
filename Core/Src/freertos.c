@@ -59,14 +59,21 @@ osThreadId_t sensorTaskHandle;
 const osThreadAttr_t sensorTask_attributes = {
   .name = "sensorTask",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal5,
 };
 /* Definitions for screenTask */
 osThreadId_t screenTaskHandle;
 const osThreadAttr_t screenTask_attributes = {
   .name = "screenTask",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityBelowNormal5,
+};
+/* Definitions for InputTask */
+osThreadId_t InputTaskHandle;
+const osThreadAttr_t InputTask_attributes = {
+  .name = "InputTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for BLEQueue */
 osMessageQueueId_t BLEQueueHandle;
@@ -87,6 +94,7 @@ const osMutexAttr_t i2c1Mutex_attributes = {
 void StartBLETask(void *argument);
 extern void StartsensorTask(void *argument);
 extern void StartscreenTask(void *argument);
+extern void StartInputTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -132,6 +140,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of screenTask */
   screenTaskHandle = osThreadNew(StartscreenTask, NULL, &screenTask_attributes);
+
+  /* creation of InputTask */
+  InputTaskHandle = osThreadNew(StartInputTask, NULL, &InputTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

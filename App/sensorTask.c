@@ -47,11 +47,12 @@ static uint8_t ChackRangeFloat(float value,float max,float min ,const char *minR
 }
 
 void StartsensorTask(void *argument){
+	EnvSafeRange_Init();
 	
 	osMutexAcquire(i2c1MutexHandle, osWaitForever);
     AHT20_Init();
     osMutexRelease(i2c1MutexHandle);
-	float temperature,humidity;
+	
 	
 	for(;;){
 		osMutexAcquire(i2c1MutexHandle,osWaitForever);

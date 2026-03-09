@@ -42,5 +42,6 @@ p1_aht20\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 p1_aht20\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 p1_aht20\main.o: ../Core/Inc/dma.h
 p1_aht20\main.o: ../Core/Inc/i2c.h
+p1_aht20\main.o: ../Core/Inc/tim.h
 p1_aht20\main.o: ../Core/Inc/usart.h
 p1_aht20\main.o: ../Core/Inc/gpio.h
