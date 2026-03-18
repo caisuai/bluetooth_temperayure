@@ -738,6 +738,16 @@
               <FileType>1</FileType>
               <FilePath>..\App\inputTask.c</FilePath>
             </File>
+            <File>
+              <FileName>pump.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\pump\pump.c</FilePath>
+            </File>
+            <File>
+              <FileName>pump.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\pump\pump.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

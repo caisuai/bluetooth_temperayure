@@ -8,6 +8,7 @@
 typedef struct {
 	float temperature;
 	float humidity;
+	uint8_t waterState;
 }FarmState;
 
 typedef struct {

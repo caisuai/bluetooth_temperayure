@@ -2,6 +2,7 @@
 #include "cmsis_os2.h"
 #include "freertos.h"
 #include "main.h"
+#include "../BSP/pump/pump.h"
 #include "farmState.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -58,6 +59,14 @@ void StartsensorTask(void *argument){
 		osMutexAcquire(i2c1MutexHandle,osWaitForever);
 		AHT20_Read(&farmState.temperature,&farmState.humidity);
 		osMutexRelease(i2c1MutexHandle);
+		
+		if(farmState.humidity<farmSafeRange.minhumidity){
+			Pump_On();
+			farmState.waterState=1;
+		}else{
+			Pump_Off();
+			farmState.waterState=0;
+		}
 		//判断是否低于/高于阈值
 		
 		uint8_t warning=0;

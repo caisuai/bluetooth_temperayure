@@ -42,9 +42,9 @@ void renderHomePage(void){
   int minInt, minDec;
   floatToIntDec(farmState.temperature, &minInt, &minDec);
   sprintf(msg, "%d.%d", minInt, minDec);
-  x = getCenteredX(msg, 21, 6);  // 计算居中位置（21是温度区域中心X坐标）
+  x = getCenteredX(msg, 21, 6);  
   sprintf(msg, "%d.%d℃", minInt, minDec);
-  x = x - 6;  // 减去"℃"符号的宽度
+  x = x - 6;  
   OLED_PrintString(x, 26, msg, &font12x12, OLED_COLOR_NORMAL);
 
   // 湿度显示
@@ -52,8 +52,15 @@ void renderHomePage(void){
 //  OLED_PrintString(52, 14, "湿度", &font12x12, OLED_COLOR_NORMAL);
   floatToIntDec(farmState.humidity, &minInt, &minDec);
   sprintf(msg, "%d.%d%%", minInt, minDec);
-  x = getCenteredX(msg, 64, 6);  // 64是湿度区域中心X坐标
+  x = getCenteredX(msg, 64, 6);  
   OLED_PrintString(x, 26, msg, &font12x12, OLED_COLOR_NORMAL);
+  
+  OLED_PrintASCIIString(9, 18, "shuibeng", &afont12x6, OLED_COLOR_REVERSED);
+  if (farmState.waterState) {
+    OLED_PrintString(101, 52, "开", &font12x12, OLED_COLOR_NORMAL);
+  } else {
+    OLED_PrintString(101, 52, "关", &font12x12, OLED_COLOR_NORMAL);
+  }
 }
 
 #define RANGE_LINE_HEIGHT 12        // 每行文字的高度（像素）
@@ -66,13 +73,13 @@ void renderRangePage() {
   uint8_t x;
   char msg[50];
   uint8_t msgLength;
-  uint8_t underlineX = 0;      // 下划线的X起始坐标
-  uint8_t underlineLength = 0;  // 下划线的长度
-  uint8_t underLineY = 0;       // 下划线的Y坐标
+  uint8_t underlineX = 0;      
+  uint8_t underlineLength = 0; 
+  uint8_t underLineY = 0;      
 
  
   
-    // 第一页：显示温度、湿度、光照强度的阈值
+    
 	OLED_PrintASCIIString(25, 0, "baojing", &afont12x6, OLED_COLOR_REVERSED);
 //    OLED_PrintString(25, 0, " 报警阈值 ", &font12x12, OLED_COLOR_REVERSED);
     // 显示温度阈值范围
@@ -80,8 +87,8 @@ void renderRangePage() {
     floatToIntDec(farmSafeRange.mintemperature, &minInt, &minDec);
     floatToIntDec(farmSafeRange.maxtemperature, &maxInt, &maxDec);
     sprintf(msg, "%d.%d < wendu < %d.%d", minInt, minDec, maxInt, maxDec);
-    msgLength = (strlen(msg) - 2) * 6;  // 计算消息总长度（减去2个中文字符，每个字符6像素宽）
-    x = 64 - msgLength / 2;  // 居中显示（64是屏幕中心X坐标）
+    msgLength = (strlen(msg) - 2) * 6;  
+    x = 64 - msgLength / 2;  
     OLED_PrintString(x, RANGE_TEMPERATURE_Y, msg, &font12x12, OLED_COLOR_NORMAL);
     
     // 如果当前选中最小温度，计算下划线位置
@@ -96,7 +103,7 @@ void renderRangePage() {
     else if (rangeEditIndex == RANGE_EDIT_TEMPERATURE_MAX) {
       sprintf(msg, "%d.%d", maxInt, maxDec);
       uint8_t valueLength = strlen(msg);
-      underlineX = x + msgLength - valueLength * 6;  // 最大值在消息末尾
+      underlineX = x + msgLength - valueLength * 6;  
       underlineLength = valueLength * 6;
       underLineY = RANGE_TEMPERATURE_LINT_Y;
     }
